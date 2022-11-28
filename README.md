@@ -1,6 +1,7 @@
 # 100_Day_Python
 
-These are the projects I am working on through a 100 Day Python Course.
+These are the projects I am working on through a 100 Day Python Course. Some days may be skipped depending on
+time availability and holidays.
 
 Note that this repo will be kept up to date from Day 9 onward, as it was 
 created starting from Day 9.
