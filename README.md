@@ -31,3 +31,8 @@ This is due to one of three reasons:
     c) I hadn't learned a better way to implement something at that point.
 When this is the case, it is possible I may go back and adjust code in
 the future should I feel like improving certain applications.
+
+5. Some of the earliest days will only have some basic programs used as
+notes on specific basic concepts. There are no projects in these days. In
+addition, some days will have other smaller programs/notes included in
+addition to the main project.
