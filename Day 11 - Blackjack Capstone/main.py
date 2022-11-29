@@ -110,8 +110,9 @@ while True:
         print("You Lose!!!")
     else: print("You Win!!!")
 
-    play_again = input("Do you want to play a game of Blackjack? Type 'y' or 'n': ")
-    if play_again == 'y':
+    play_again = input("Do you want to play another game of Blackjack? Type 'y' or 'n': ")
+    if play_again == 'n':
+        exit()
+    else: 
         os.system("cls")
         continue
-    else: False
