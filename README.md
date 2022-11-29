@@ -25,9 +25,9 @@ I forget how to implement something specific.
 
 4. It is likely that many projects may not be coded in the most optimal way.
 This is due to one of three reasons:
-    a. I didn't think of a better solution at the time
-    b. I was encouraged to build an application using only concepts I
-    had learned already
-    c. I hadn't learned a better way to implement something at that point
+    a) I didn't think of a better solution at the time, 
+    b) I was encouraged to build an application using only concepts I
+    had learned already, 
+    c) I hadn't learned a better way to implement something at that point.
 When this is the case, it is possible I may go back and adjust code in
 the future should I feel like improving certain applications.
