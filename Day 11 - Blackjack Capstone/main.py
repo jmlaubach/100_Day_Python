@@ -24,11 +24,7 @@ def start_score(hand):
     for c in hand:
         if c == 'A':
             score += 11
-        elif c == 'J':
-            score += 10
-        elif c == 'Q':
-            score += 10
-        elif c == 'K':
+        elif c == 'J' or c == 'Q' or c == 'K':
             score += 10
         else: 
             score += int(c)
@@ -63,11 +59,7 @@ while True:
             if ace_choice == 1:
                 card_value = 1
             else: card_value = 11
-        elif current_card == 'J':
-            card_value = 10
-        elif current_card == 'Q':
-            card_value = 10
-        elif current_card == 'K':
+        elif current_card == 'J' or current_card == 'Q' or current_card == 'K':
             card_value = 10
         else: card_value = int(current_card)
 
@@ -86,11 +78,7 @@ while True:
         deck_cycle += 1
         if current_card == 'A':
             card_value = 1
-        elif current_card == 'J':
-            card_value = 10
-        elif current_card == 'Q':
-            card_value = 10
-        elif current_card == 'K':
+        elif current_card == 'J' or current_card == 'Q' or current_card == 'K':
             card_value = 10
         else: card_value = int(current_card)
 
