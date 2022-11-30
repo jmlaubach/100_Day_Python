@@ -3,7 +3,9 @@
 enemies = 1
 
 def increase_enemies():
-    enemies = 2
+    # Below line will pull the global enemies variable into the function to be used/modified
+    # global enemies
+    enemies += 2
     print(f"enemies inside function: {enemies}")
 
 increase_enemies()
@@ -20,3 +22,9 @@ def game():
         print(player_health)
     
     drink_potion()
+
+# There is no block scope for variables
+# For example, the below variable is accessable from outside the if statement
+
+if 3 > 2:
+    a_variable = 10
