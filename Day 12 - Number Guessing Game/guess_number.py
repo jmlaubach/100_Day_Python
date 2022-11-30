@@ -19,7 +19,7 @@ def guess_loop(guesses):
             print("Guess again.")
         else:
             remainder -= 1
-            print("To low.")
+            print("Too low.")
             print("Guess again.")
     print("You ran out of guesses. You lose!")
     print(f"The number was {number}")
