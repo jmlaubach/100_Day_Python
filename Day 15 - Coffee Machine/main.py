@@ -36,6 +36,16 @@ def money_calc(coins):
     tot_coin_spent = q_tot + d_tot + n_tot + p_tot
     return tot_coin_spent
 
+def refill_check(drinks, d_choice, wl, ml, cl):
+    if wl < drinks[d_choice.title()]['ingredients']['water']:
+        return "+water"
+    elif ml < drinks[d_choice.title()]['ingredients']['milk']:
+        return "+milk"
+    elif cl < drinks[d_choice.title()]['ingredients']['coffee']:
+        return "+coffee"
+
+
+
 def make_drink(drinks, d_choice):
     '''Makes an drink for the user and dispenses appropriate change.
     Uses the drink choice to find the key in the dictionary and pull values.
@@ -64,11 +74,25 @@ def make_drink(drinks, d_choice):
 
 
 def coffee_machine():
+    global water_level
+    global milk_level
+    global coffee_level
     drink_choice = input("What would you like to drink? (espresso/latte/cappuccino): ")
     if drink_choice == 'report':
         report(water_level, milk_level, coffee_level, money_level)
         coffee_machine()
     else:
+        while water_level < coffee_data[drink_choice.title()]['ingredients']['water'] or milk_level < coffee_data[drink_choice.title()]['ingredients']['milk'] or coffee_level < coffee_data[drink_choice.title()]['ingredients']['coffee']:
+            print("Insufficient ingredients.") 
+            if refill_check(coffee_data, drink_choice, water_level, milk_level, coffee_level) == "+water":
+                input("To refill water, hit 'Enter': ")
+                water_level += (300 - water_level)
+            elif refill_check(coffee_data, drink_choice, water_level, milk_level, coffee_level) == "+milk":
+                input("To refill milk, hit 'Enter': ")
+                milk_level += (200 - milk_level)
+            else:
+                input("To refill coffee, hit 'Enter': ")
+                coffee_level += (100 - coffee_level)
         make_drink(coffee_data, drink_choice)
     coffee_machine()
 
