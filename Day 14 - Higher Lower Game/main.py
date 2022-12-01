@@ -52,4 +52,15 @@ score = 0
 
 game(choice_a, choice_b, score, list_cycle, starting_data)
 
+# NOTES
+
+# Could add small improvement to change 'a' to 'an' in the comparison statement if the 
+# description of the account starts with a vowel.
+
+# Would be cool to change this to actually pull a random account from Instagram itself
+# with over 1 mil followers and compare it to another account instead of using the list.
+
+# There is some repetition in the code. Some of it could be consolidated into other 
+# functions to reduce redundancy.
+
 
