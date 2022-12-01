@@ -37,8 +37,9 @@ def money_calc(coins):
     return tot_coin_spent
 
 def make_drink(drinks, d_choice):
-    '''Makes an espresso for the user and dispenses appropriate change.
-    Updates resources in coffee machine based on espresso ingredient values.'''
+    '''Makes an drink for the user and dispenses appropriate change.
+    Uses the drink choice to find the key in the dictionary and pull values.
+    Creates drink and updates all resources in the coffee machine appropriately.'''
     global water_level
     global milk_level
     global coffee_level
@@ -46,16 +47,19 @@ def make_drink(drinks, d_choice):
     drink_cost = drinks[d_choice.title()]['cost']
     choice = d_choice.title()
     money_inserted = money_calc(coin_data)
-    if money_inserted > drink_cost:
-        water_level -= drinks[choice]['ingredients']['water']
-        milk_level -= drinks[choice]['ingredients']['milk']
-        coffee_level -= drinks[choice]['ingredients']['coffee']
-        money_level += drinks[choice]['cost']
-        change = money_inserted - drink_cost
-        print(f'Here is ${change:.2f} in change.')
-        print(f"Here is your {choice}. Enjoy!")
-    else:
-        print("Not enough. Please insert more coins.")
+    while money_inserted < drink_cost:
+            print(f"You have inserted ${money_inserted:.2f}")
+            print("Not enough.")
+            money_inserted += money_calc(coin_data)
+
+    water_level -= drinks[choice]['ingredients']['water']
+    milk_level -= drinks[choice]['ingredients']['milk']
+    coffee_level -= drinks[choice]['ingredients']['coffee']
+    money_level += drinks[choice]['cost']
+    change = money_inserted - drink_cost
+    print(f'Here is ${change:.2f} in change.')
+    print(f"Here is your {choice}. Enjoy!")
+
 
 def coffee_machine():
     drink_choice = input("What would you like to drink? (espresso/latte/cappuccino): ")
