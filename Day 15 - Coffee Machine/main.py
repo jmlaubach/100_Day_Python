@@ -4,7 +4,7 @@ from machine_data import coin_data
 
 # Print report on resources if needed
 
-def report(d_choice, water_l, milk_l, coffee_l, money_l):
+def report(water_l, milk_l, coffee_l, money_l):
     '''Prints out a report of each resource in the coffee maker.'''
     print(f"Water: {water_l}ml")
     print(f"Milk: {milk_l}ml")
@@ -36,17 +36,21 @@ def money_calc(coins):
     tot_coin_spent = q_tot + d_tot + n_tot + p_tot
     return tot_coin_spent
 
-def make_drink(drinks, d_choice, water_l, milk_l, coffee_l, money_l):
+def make_drink(drinks, d_choice):
     '''Makes an espresso for the user and dispenses appropriate change.
     Updates resources in coffee machine based on espresso ingredient values.'''
+    global water_level
+    global milk_level
+    global coffee_level
+    global money_level
     drink_cost = drinks[d_choice.title()]['cost']
     choice = d_choice.title()
     money_inserted = money_calc(coin_data)
     if money_inserted > drink_cost:
-        water_l -= drinks[choice]['ingredients']['water']
-        milk_l -= drinks[choice]['ingredients']['milk']
-        coffee_l -= drinks[choice]['ingredients']['coffee']
-        money_l += drinks[choice]['cost']
+        water_level -= drinks[choice]['ingredients']['water']
+        milk_level -= drinks[choice]['ingredients']['milk']
+        coffee_level -= drinks[choice]['ingredients']['coffee']
+        money_level += drinks[choice]['cost']
         change = money_inserted - drink_cost
         print(f'Here is ${change:.2f} in change.')
         print(f"Here is your {choice}. Enjoy!")
@@ -57,19 +61,10 @@ def coffee_machine():
     drink_choice = input("What would you like to drink? (espresso/latte/cappuccino): ")
     if drink_choice == 'report':
         report(water_level, milk_level, coffee_level, money_level)
+        coffee_machine()
     else:
-        make_drink(coffee_data, drink_choice, water_level, milk_level, coffee_level, money_level)
-    #elif drink_choice == 'latte':
-    #elif drink_choice == 'cappuccino':
-
-# Confirm resources are sufficient
-## Prompt to add resources if more are needed
-
-# Ask to insert coins (how many of each type)
-# Calculate if total inserted is enough for drink, if so, dispense drink
-# calculate difference over and dispense change back to user
-
-# Return to prompt for drink choice
+        make_drink(coffee_data, drink_choice)
+    coffee_machine()
 
 water_level = 300
 milk_level = 200
