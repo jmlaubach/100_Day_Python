@@ -46,6 +46,8 @@ def make_drink(drinks, d_choice):
     global money_level
     drink_cost = drinks[d_choice.title()]['cost']
     choice = d_choice.title()
+    cost = drinks[d_choice.title()]['cost']
+    print(f"{choice} costs ${cost:.2f}.")
     money_inserted = money_calc(coin_data)
     while money_inserted < drink_cost:
             print(f"You have inserted ${money_inserted:.2f}")
