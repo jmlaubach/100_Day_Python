@@ -2,7 +2,8 @@ coffee_data = {
     'Espresso': {
         'ingredients': {
             'water': 50,
-            'coffee': 18
+            'coffee': 18,
+            'milk': 0
         },
         'cost': 1.50
     },
@@ -14,7 +15,7 @@ coffee_data = {
         },
         'cost': 2.50
     },
-    'Espresso': {
+    'Cappuccino': {
         'ingredients': {
             'water': 250,
             'coffee': 24,

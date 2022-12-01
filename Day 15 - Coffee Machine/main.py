@@ -4,16 +4,26 @@ from machine_data import coin_data
 
 # Print report on resources if needed
 
-def user_choice():
-
-def resource_check(drinks, coins):
-    
-def report(water, milk, coffee, money):
+def report(d_choice, water_l, milk_l, coffee_l, money_l):
     '''Prints out a report of each resource in the coffee maker.'''
-    print(f"Water: {water}ml")
-    print(f"Milk: {milk}ml")
-    print(f"Coffee: {coffee}g")
-    print(F"Money: ${money}")
+    print(f"Water: {water_l}ml")
+    print(f"Milk: {milk_l}ml")
+    print(f"Coffee: {coffee_l}g")
+    print(F"Money: ${money_l}")
+
+def resource_calc(drink, water_l, milk_l, coffee_l, drink_data):
+    '''Takes the "drink_choice" of the user and pulls the required ingredient amounts from data.
+    It compares those amounts to the levels of the coffee machine and decides if there isn't enough.'''
+    if drink_data[drink.title()]['ingredients']['water'] > water_l:
+        print("Sorry, there is not enough water.")
+        coffee_machine()
+    elif drink_data[drink.title()]['ingredients']['milk'] > milk_l:
+        print("Sorry, there is not enough milk.")
+        coffee_machine()
+    elif drink_data[drink.title()]['ingredients']['coffee'] > coffee_l:
+        print("Sorry, there is not enough coffee.")
+        coffee_machine()
+    else: return
 
 def money_calc(coins):
     '''Calculates total the user spent based on coins inserted into the machine.
@@ -26,31 +36,29 @@ def money_calc(coins):
     tot_coin_spent = q_tot + d_tot + n_tot + p_tot
     return tot_coin_spent
 
-def espresso_make(drinks, water_l, milk_l, coffee_l, money_l):
+def make_drink(drinks, d_choice, water_l, milk_l, coffee_l, money_l):
     '''Makes an espresso for the user and dispenses appropriate change.
     Updates resources in coffee machine based on espresso ingredient values.'''
-    esp_cost = drinks['Espresso']['cost']
-    if money_calc(coin_data) > esp_cost:
-        water_l -= drinks['Espresso']['ingredients']['water']
-        milk_l -= drinks['Espresso']['ingredients']['milk']
-        coffee_l -= drinks['Espresso']['ingredients']['coffee']
-        money_l += drinks['Espresso']['ingredients']['water']
-        change = money_calc(coin_data) - esp_cost
+    drink_cost = drinks[d_choice.title()]['cost']
+    choice = d_choice.title()
+    money_inserted = money_calc(coin_data)
+    if money_inserted > drink_cost:
+        water_l -= drinks[choice]['ingredients']['water']
+        milk_l -= drinks[choice]['ingredients']['milk']
+        coffee_l -= drinks[choice]['ingredients']['coffee']
+        money_l += drinks[choice]['cost']
+        change = money_inserted - drink_cost
+        print(f'Here is ${change:.2f} in change.')
+        print(f"Here is your {choice}. Enjoy!")
     else:
         print("Not enough. Please insert more coins.")
-    
-
-#def latte_make():
-
-#def cappuccino_make():
 
 def coffee_machine():
-    # Ask for drink choice
     drink_choice = input("What would you like to drink? (espresso/latte/cappuccino): ")
     if drink_choice == 'report':
         report(water_level, milk_level, coffee_level, money_level)
-    elif drink_choice == 'espresso':
-        espresso_make(coffee_data, water_level, milk_level, coffee_level, money_level)
+    else:
+        make_drink(coffee_data, drink_choice, water_level, milk_level, coffee_level, money_level)
     #elif drink_choice == 'latte':
     #elif drink_choice == 'cappuccino':
 
