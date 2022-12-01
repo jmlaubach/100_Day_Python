@@ -5,14 +5,11 @@ from art import logo
 from art import vs
 from game_data import data
 
-# Choose two Instagram accounts from the data dictionary
-
 def data_shuffle(all_data):
     random.shuffle(all_data)
     return all_data
 
 def game(first_choice, second_choice, total_score, cycle_count, new_data):
-    # Print out account name, description, and location for each choice
     print(logo)
     if total_score == 0:
         pass
@@ -21,10 +18,7 @@ def game(first_choice, second_choice, total_score, cycle_count, new_data):
     print(f"Compare A: {first_choice['name']}, a {first_choice['description']}, from {first_choice['country']}.")
     print(vs)
     print(f"Against B: {second_choice['name']}, a {second_choice['description']}, from {second_choice['country']}.")
-    # Have the player pick a choice with 'A' or 'B'
     main_choice = input("Who has more followers? Type 'A' or 'B': ").lower()
-    # Calculate which of the two choices has more followers
-    # If wrong, exit the game.
     if main_choice == 'a':
         main_choice = first_choice
         if main_choice['follower_count'] < second_choice['follower_count']:
@@ -39,7 +33,6 @@ def game(first_choice, second_choice, total_score, cycle_count, new_data):
             quit()
         else:
             total_score += 1
-    # If right, loop back to beginning and use the players choice as the next starting choice.
     first_choice = second_choice
     cycle_count += 1
     second_choice = new_data[cycle_count]
