@@ -13,7 +13,8 @@ def report(water_l, milk_l, coffee_l, money_l):
 
 def resource_calc(drink, water_l, milk_l, coffee_l, drink_data):
     '''Takes the "drink_choice" of the user and pulls the required ingredient amounts from data.
-    It compares those amounts to the levels of the coffee machine and decides if there isn't enough.'''
+    It compares those amounts to the levels of the coffee machine and decides if there isn't enough.
+    When all resources are satisfied, returns to machine order.'''
     if drink_data[drink.title()]['ingredients']['water'] > water_l:
         print("Sorry, there is not enough water.")
         coffee_machine()
@@ -27,7 +28,8 @@ def resource_calc(drink, water_l, milk_l, coffee_l, drink_data):
 
 def money_calc(coins):
     '''Calculates total the user spent based on coins inserted into the machine.
-    Checks total for each coin against value from the machine_data dictionary.'''
+    Checks total for each coin against value from the machine_data dictionary.
+    Returns total amount put into the machine.'''
     print("Please insert coins.")
     q_tot = (int(input("How many quarters?: ")) * coins['Quarter'])
     d_tot = (int(input("How many dimes? ")) * coins['Dime'])
@@ -37,6 +39,8 @@ def money_calc(coins):
     return tot_coin_spent
 
 def refill_check(drinks, d_choice, wl, ml, cl):
+    '''Checks if resource is too low to make the required drink.
+    Calculates and returns the difference from current to maximum.'''
     if wl < drinks[d_choice.title()]['ingredients']['water']:
         return "+water"
     elif ml < drinks[d_choice.title()]['ingredients']['milk']:
@@ -74,6 +78,8 @@ def make_drink(drinks, d_choice):
 
 
 def coffee_machine():
+    '''Contains main code to run through machine steps and perform all checks.
+    Returns to prompting for drink after going through steps and delivering drink.'''
     global water_level
     global milk_level
     global coffee_level
