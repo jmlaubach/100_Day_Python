@@ -87,6 +87,9 @@ def coffee_machine():
     if drink_choice == 'report':
         report(water_level, milk_level, coffee_level, money_level)
         coffee_machine()
+    elif drink_choice == 'off':
+        print("Turning off...")
+        quit()
     else:
         while water_level < coffee_data[drink_choice.title()]['ingredients']['water'] or milk_level < coffee_data[drink_choice.title()]['ingredients']['milk'] or coffee_level < coffee_data[drink_choice.title()]['ingredients']['coffee']:
             print("Insufficient ingredients.") 
