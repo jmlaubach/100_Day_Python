@@ -24,10 +24,3 @@ coffee_data = {
         'cost': 3.00
     }
 }
-
-coin_data = {
-    'Penny': 0.01,
-    'Nickel': 0.05,
-    "Dime": 0.10,
-    "Quarter": 0.25
-}

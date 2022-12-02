@@ -26,15 +26,15 @@ def resource_calc(drink, water_l, milk_l, coffee_l, drink_data):
         coffee_machine()
     else: return
 
-def money_calc(coins):
+def money_calc():
     '''Calculates total the user spent based on coins inserted into the machine.
     Checks total for each coin against value from the machine_data dictionary.
     Returns total amount put into the machine.'''
     print("Please insert coins.")
-    q_tot = (int(input("How many quarters?: ")) * coins['Quarter'])
-    d_tot = (int(input("How many dimes? ")) * coins['Dime'])
-    n_tot = (int(input("How many nickels? ")) * coins['Nickel'])
-    p_tot = (int(input("How many pennies? ")) * coins['Penny'])
+    q_tot = (int(input("How many quarters?: "))) * 0.25 
+    d_tot = (int(input("How many dimes? "))) * 0.1 
+    n_tot = (int(input("How many nickels? "))) * 0.05 
+    p_tot = (int(input("How many pennies? "))) * 0.01 
     tot_coin_spent = q_tot + d_tot + n_tot + p_tot
     return tot_coin_spent
 
@@ -62,11 +62,11 @@ def make_drink(drinks, d_choice):
     choice = d_choice.title()
     cost = drinks[d_choice.title()]['cost']
     print(f"{choice} costs ${cost:.2f}.")
-    money_inserted = money_calc(coin_data)
+    money_inserted = money_calc()
     while money_inserted < drink_cost:
             print(f"You have inserted ${money_inserted:.2f}")
             print("Not enough.")
-            money_inserted += money_calc(coin_data)
+            money_inserted += money_calc()
 
     water_level -= drinks[choice]['ingredients']['water']
     milk_level -= drinks[choice]['ingredients']['milk']
