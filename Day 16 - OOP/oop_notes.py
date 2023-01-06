@@ -16,4 +16,16 @@
     # CarBlueprint is the class. First letter of each word is capitalized to differentiate it
     # car is the object, created from the CarBlueprint() class
 
+# turtle module example using classes
 
+from turtle import Turtle, Screen
+
+timmy = Turtle()
+print(timmy)
+timmy.shape("turtle")
+timmy.color("coral")
+timmy.forward(100)
+
+my_screen = Screen()
+print(my_screen.canvheight)
+my_screen.exitonclick()
