@@ -6,9 +6,6 @@ colormode(255)
 timmy.speed(0)
 timmy.width(2)
 
-colors = ["red", "SeaGreen3", "yellow2", "SkyBlue1", "tan1"]
-directions = [90, 180, 270, 360]
-
 def random_color():
     r = random.randint(0, 255)
     g = random.randint(0, 255)
