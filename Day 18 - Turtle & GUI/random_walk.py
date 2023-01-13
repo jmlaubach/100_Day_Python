@@ -1,5 +1,5 @@
 from turtle import *
-from random import randint
+import random
 
 timmy = Turtle()
 timmy.speed(8)
@@ -10,8 +10,8 @@ directions = [90, 180, 270, 360]
 
 def random_walk(c, d):
     while True:
-        timmy.color(c[randint(0, 4)])
-        timmy.right(d[randint(0, 3)])
+        timmy.color(random.choice(c))
+        timmy.right(random.choice(d))
         timmy.forward(10)
 
 
